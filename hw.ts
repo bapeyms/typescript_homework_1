@@ -138,7 +138,7 @@ function myCalcular(mathOperation: number, n1: number, n2: number): number {
 }
 
 let n1: number = 3;
-let n2: number = 5;
+let n2: number = 3;
 let myChoice: number = 5;
 let result5: number = myCalcular(myChoice, n1, n2);
 switch (myChoice) {
@@ -155,7 +155,7 @@ switch (myChoice) {
         console.log(`Result: ${n1} / ${n2} = ${result5}\n`);
         break;
     default:
-        console.log("The correct math operation was not selected");
+        console.log("The correct math operation was not selected\n");
 }
 
 // 10. Написать функцию, выводящую на экран прямоугольник с высотой N и шириной K.
@@ -170,27 +170,124 @@ function printRectange(n: number, k: number) : void {
     }
 }
 printRectange(2, 3);
+console.log("\n");
 
 // 11. Написать функцию, которая проверяет, является ли переданное ей число простым? 
 // Число называется простым, если оно делится без остатка только на себя и на единицу.
 console.log("TASK 11"); 
+function isPrime(checkIsPrime: number): boolean {
+    let result: boolean = true;
+    if (checkIsPrime <= 1) {
+        result = false;
+    }
+    for (let i = 2; i < checkIsPrime; i++) {
+        if (checkIsPrime % i === 0) {
+            result = false;
+            return result;
+        }
+    }
+    return result;
+}
+
+let checkIsPrime: number = 4;
+console.log(`Is number prime? (1 - true, 0 - false)\nAnswer: ${isPrime(checkIsPrime)}\n`);
 
 // 12. Написать функцию, вычисляющую факториал переданного ей числа.
-console.log("TASK 12"); 
+console.log("TASK 12");
+function myFactorial(factorial: number): number {
+    if (factorial < 0) {
+        return - 1;
+    }
+    let result: number = 1;
+    for (let i = 1; i <= factorial; i++) {
+        result *= i;
+    }
+    return result;
+}
+console.log(`Factorial: ${myFactorial(3)}\n`);
 
 // 13. Написать функцию, которая принимает два параметра: основание степени и показатель степени, 
 // и вычисляет степень числа на основе полученных данных.
 console.log("TASK 13"); 
+function myPower(base: number, exponent: number): number {
+    let result: number = base ** exponent;
+    return result;
+}
+let baseNumber: number = 2;
+let exponentNumber: number = 4;
+let toPower: number = myPower(baseNumber, exponentNumber);
+console.log(`${baseNumber} to the power of ${exponentNumber} is ${toPower}\n`);
 
 // 14. Написать функцию, которая получает в качестве параметров 2 целых числа и возвращает сумму чисел из диапазона между ними.
 console.log("TASK 14");
+function sumOfRange(n1: number, n2: number): number {
+    let start: number = Math.min(n1, n2);
+    let end: number = Math.max(n1, n2);
+
+    let result: number = 0;
+    for (let i = start + 1; i < end; i++) {
+        result += i;
+    }
+    return result;
+}
+let number1: number = 5;
+let number2: number = 9;
+let result6: number = sumOfRange(number1, number2);
+console.log(`Sum Of A Range = ${result6}\n`);
 
 // 15. Число называется совершенным, если сумма всех его делителей равна ему самому. 
 // Напишите функцию поиска таких чисел во введенном интервале.
 console.log("TASK 15"); 
+function isNumberPerfect(n: number): boolean {
+    if (n <= 1) {
+        return false;
+    }
+    let sum: number = 0;
+    for (let i = 1; i < n; i++) {
+        if (n % i === 0) {
+            sum += i;
+        }
+    }
+    return sum === n;
+}
+function findPerfectNumber(start: number, end: number): number[] {
+    let resultArr: number[] = [];
+    for (let i = start; i <= end; i++) {
+        if (isNumberPerfect(i)) {
+            resultArr.push(i);
+        }
+    }
+    return resultArr;
+}
+console.log(`Perfect Numbers: ${findPerfectNumber(1, 100)}\n`);
 
 // 16. Написать функцию, проверяющую является ли переданный ей параметр алфавитно-цифровым.
 console.log("TASK 16");
+function isAlphanumeric(value: string): boolean {
+    return /^[a-zA-Z0-9]+$/.test(value);
+}
+let checkIsAlphanumeric: string = "ABC123";
+let result7: boolean = isAlphanumeric(checkIsAlphanumeric);
+console.log(`Result: ${result7}\n`);
+
 
 // 17. Написать функцию, которая определяет, является ли «счастливым» шестизначное число.
-console.log("TASK 17"); 
+console.log("TASK 17");
+function isLucky(n: number): boolean {
+    const str = n.toString();
+    if (str.length !== 6) {
+        console.log("ERROR! Number must be 6 digits!\n");
+        return false;
+    }
+
+    let sum1: number = 0;
+    let sum2: number = 0;
+
+    for (let i = 0; i < 3; i++) {
+        sum1 += Number(str[i]);
+        sum2 += Number(str[i + 3]);
+    }
+    return sum1 === sum2;
+}
+
+let checkIsLucky: number = 234123
