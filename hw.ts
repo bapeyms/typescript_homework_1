@@ -291,3 +291,4 @@ function isLucky(n: number): boolean {
 }
 
 let checkIsLucky: number = 234123
+console.log(`Is Number Lucky? - ${isLucky(checkIsLucky)}\n`);

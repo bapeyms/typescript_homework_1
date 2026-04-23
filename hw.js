@@ -261,3 +261,4 @@ function isLucky(n) {
     return sum1 === sum2;
 }
 let checkIsLucky = 234123;
+console.log(`Is Number Lucky? - ${isLucky(checkIsLucky)}\n`);
